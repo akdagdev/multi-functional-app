@@ -11,6 +11,7 @@ const styles = StyleSheet.create({
         borderTopRightRadius: 20,
         borderBottomLeftRadius: 20,
         borderBottomRightRadius: 20,
+        flexDirection: "row",
 
     }), CardName: {
         color: COLORS.white,
@@ -23,12 +24,11 @@ const styles = StyleSheet.create({
 
     }, backgroundImage: {
         flex: 1,
+        height: "auto",
         resizeMode: 'cover', // or 'stretch' or 'contain'
         justifyContent: 'center',
-    },
-    imageStyle: {
-        borderRadius: 20, // Adjust this value to change the radius of the corners
-    },
+        borderRadius: 20,
+    }
 });
 
 export default styles;

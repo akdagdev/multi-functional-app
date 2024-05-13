@@ -5,7 +5,6 @@
       "bundler": "metro"
     },
     "plugins": [
-      "expo-router"
     ],
     "name": "multi-functional-app",
     "slug": "multi-functional-app"

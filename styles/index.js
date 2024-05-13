@@ -24,7 +24,9 @@ const styles = StyleSheet.create({
 
     }, spacing: {
         width: SIZES.medium, // Fixed spacing between the boxes
-    },
+    }, TODOInputContainer: {
+
+    }
 });
 
 export default styles;

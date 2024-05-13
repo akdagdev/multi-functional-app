@@ -6,9 +6,8 @@ import images from "../../../constants/images";
 export default function AppCard(props) {
     return (
         <TouchableOpacity style={styles.Card(props.width, props.backgroundColor)} onPress={() => props.onPress()}>
-                <ImageBackground source={props.image} style={styles.backgroundImage} imageStyle={styles.imageStyle}>
+                <Image source={props.image} style={styles.backgroundImage} imageStyle={styles.imageStyle} />
                     <Text style={styles.CardName}>{props.name}</Text>
-                </ImageBackground>
         </TouchableOpacity>
     )
 }
