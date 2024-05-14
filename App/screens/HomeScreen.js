@@ -23,11 +23,12 @@ const HomeScreen = () => {
                              onPress={() => navigation.navigate('Weather')}/>
                 < /View>
                 <View style={styles.HomeScreenAppsContainerLine}>
-                    <AppCard name={"Ask ChatGPT"} backgroundColor={COLORS.primary} image={null} width={1} onPress={() => Linking.openURL('chatgpt://app')}/>
+                    <AppCard name={"Ask ChatGPT"} backgroundColor={COLORS.primary} image={null} width={1}
+                             onPress={() => Linking.openURL('chatgpt://app')}/>
                 </View>
             </View>
 
         </SafeAreaView>
-);
+    );
 }
 export default HomeScreen
