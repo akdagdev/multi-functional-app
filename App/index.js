@@ -5,8 +5,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './screens/HomeScreen';
 import TodoScreen from './screens/TodoScreen';
+import WeatherScreen from './screens/WeatherScreen';
 import {useFonts} from "expo-font";
-import {Text, ActivityIndicator, AppRegistry, Platform, View} from "react-native";
+import {ActivityIndicator, AppRegistry, Platform, View} from "react-native";
 
 const Stack = createStackNavigator();
 
@@ -36,6 +37,7 @@ const Index = () => {
             <Stack.Navigator initialRouteName="Home">
                 <Stack.Screen name="Home" component={HomeScreen} />
                 <Stack.Screen name="Todo" component={TodoScreen} />
+                <Stack.Screen name="Weather" component={WeatherScreen} options={{headerStyle: {backgroundColor: "#c4daf5", }, cardStyle: { backgroundColor: "#1862c9" }}}/>
             </Stack.Navigator>
         </NavigationContainer>
     );
