@@ -1,8 +1,11 @@
-import React, {useState, useEffect} from 'react';
-import {View, Text, StyleSheet, Image, ActivityIndicator, TouchableOpacity, Platform} from 'react-native';
-import {requestForegroundPermissionsAsync, getCurrentPositionAsync} from 'expo-location';
+import React, {useEffect, useState} from 'react';
+import {ActivityIndicator, Image, Platform, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {getCurrentPositionAsync, requestForegroundPermissionsAsync} from 'expo-location';
 import axios from 'axios';
 import {COLORS, FONT, SIZES} from "../../constants";
+import {WEATHER_API_KEY} from "@env"
+
+const weatherAPIKey = WEATHER_API_KEY;
 
 const WeatherApp = () => {
     const [weatherData, setWeatherData] = useState(null);
@@ -10,7 +13,7 @@ const WeatherApp = () => {
 
     const getLocationAndWeather = async () => {
         try {
-            // Kullanıcıdan izin iste
+            // Requesting permission from the user
             const {status} = await requestForegroundPermissionsAsync();
             if (status !== 'granted') {
                 setLoading(false);
@@ -22,7 +25,7 @@ const WeatherApp = () => {
 
             await fetchWeather(latitude, longitude);
         } catch (error) {
-            console.error('GPS konumu alınamadı:', error);
+            console.error('Error:', error);
             setLoading(false);
         }
     };
@@ -33,13 +36,12 @@ const WeatherApp = () => {
 
     const fetchWeather = async (latitude, longitude) => {
         try {
-            const apiKey = '2b9085ee6b3ce4777d79c5b5552d5333';
-            const apiUrl = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`;
+            const apiUrl = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${weatherAPIKey}`;
             const response = await axios.get(apiUrl);
             setWeatherData(response.data);
             setLoading(false);
         } catch (error) {
-            console.error('Hava durumu alınamadı:', error);
+            console.error('Error:', error);
             setLoading(false);
         }
     };
@@ -85,7 +87,7 @@ const WeatherApp = () => {
                     <View style={styles.weatherContainer}>
                         <Text style={styles.city}>{weatherData?.name}</Text>
                         <Text style={styles.weather}>
-                            {weatherData?.weather[0].main}, {weatherData?.main.temp}°C
+                            {weatherData?.weather[0].main}, {Math.round(weatherData?.main.temp)}°C
                         </Text>
                     </View>
                 </View>}

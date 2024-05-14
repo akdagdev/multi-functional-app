@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import {View, Text, TextInput, TouchableOpacity, FlatList, StyleSheet} from 'react-native';
-import {useNavigation} from "@react-navigation/native";
-import {COLORS} from "../../constants";
+import {COLORS, FONT} from "../../constants";
 
 const TodoApp = () => {
-    const navigation = useNavigation();
     const [todos, setTodos] = useState([]);
     const [text, setText] = useState('');
 
@@ -53,7 +51,7 @@ const todostyle = StyleSheet.create({
     },
     title: {
         fontSize: 24,
-        fontWeight: 'bold',
+        fontFamily: FONT.bold,
         marginBottom: 20,
     },
     inputContainer: {
@@ -76,7 +74,7 @@ const todostyle = StyleSheet.create({
     },
     addButtonText: {
         color: '#fff',
-        fontWeight: 'bold',
+        fontFamily: FONT.bold,
     },
     todoItem: {
         borderWidth: 1,
